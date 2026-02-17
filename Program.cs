@@ -1,3 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
+using Real_Estate_WebAPI.Interfaces;
+using Real_Estate_WebAPI.Repositories;
+using Real_Estate_WebAPI.Services;
+using Real_Estate_WebAPI.Services.Auth;
+using Real_Estate_WebAPI.Services.Email;
+using Real_Estate_WebAPI.Settings;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +17,52 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<MongoDbSettings>(
+    builder.Configuration.GetSection("MongoDbSettings"));
+
+builder.Services.AddSingleton<DatabaseInitializer>();
+
+builder.Services.AddSingleton<IMongoClient>(sp =>
+{
+    var settings = builder.Configuration
+        .GetSection("MongoDbSettings")
+        .Get<MongoDbSettings>();
+
+    return new MongoClient(settings.ConnectionString);
+});
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.Configure<SmtpSettings>(
+builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    var jwt = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = jwt.Issuer,
+        ValidAudience = jwt.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(jwt.Key))
+    };
+});
+
+
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
+
 
 var app = builder.Build();
 
@@ -16,9 +73,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider
+        .GetRequiredService<DatabaseInitializer>();
+
+    await initializer.InitializeAsync();
+}
+
+
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 
