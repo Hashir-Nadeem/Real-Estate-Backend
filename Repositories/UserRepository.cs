@@ -86,23 +86,11 @@ namespace Real_Estate_WebAPI.Repositories
 
         public async Task<User?> GetByResetTokenAsync(string token)
         {
-            var hashed = HashToken(token);
-
+        
             return await _users
-                .Find(u => u.PasswordResetToken == hashed)
+                .Find(u => u.PasswordResetToken == token)
                 .FirstOrDefaultAsync();
         }
-
-        private string HashToken(string token)
-        {
-            using var sha = SHA256.Create();
-
-            var bytes = sha.ComputeHash(
-                Encoding.UTF8.GetBytes(token));
-
-            return Convert.ToBase64String(bytes);
-        }
-
 
 
         public RefreshToken GenerateRefreshToken(bool rememberMe)

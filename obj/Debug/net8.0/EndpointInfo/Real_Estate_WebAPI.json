@@ -159,16 +159,3699 @@
           }
         }
       }
+    },
+    "/api/properties": {
+      "post": {
+        "tags": [
+          "Properties"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePropertyRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePropertyRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePropertyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/properties/{id}": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/properties/my": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/properties/search": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locality",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "minPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "bedrooms",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/properties/nearby": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "radiusKm",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "BsonBinaryData": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "bytes": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "subType": {
+            "$ref": "#/components/schemas/BsonBinarySubType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonBinarySubType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          128
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "BsonDateTime": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "millisecondsSinceEpoch": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonElement": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "$ref": "#/components/schemas/BsonValue"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonJavaScript": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonJavaScriptWithScope": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonMaxKey": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonMinKey": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonNull": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonRegularExpression": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "pattern": {
+            "type": "string",
+            "nullable": true
+          },
+          "options": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonSymbol": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonTimestamp": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "increment": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          127,
+          255
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "BsonUndefined": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BsonValue": {
+        "type": "object",
+        "properties": {
+          "asBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "asBsonArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonValue"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonBinaryData": {
+            "$ref": "#/components/schemas/BsonBinaryData"
+          },
+          "asBsonDateTime": {
+            "$ref": "#/components/schemas/BsonDateTime"
+          },
+          "asBsonDocument": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "asBsonJavaScript": {
+            "$ref": "#/components/schemas/BsonJavaScript"
+          },
+          "asBsonJavaScriptWithScope": {
+            "$ref": "#/components/schemas/BsonJavaScriptWithScope"
+          },
+          "asBsonMaxKey": {
+            "$ref": "#/components/schemas/BsonMaxKey"
+          },
+          "asBsonMinKey": {
+            "$ref": "#/components/schemas/BsonMinKey"
+          },
+          "asBsonNull": {
+            "$ref": "#/components/schemas/BsonNull"
+          },
+          "asBsonRegularExpression": {
+            "$ref": "#/components/schemas/BsonRegularExpression"
+          },
+          "asBsonSymbol": {
+            "$ref": "#/components/schemas/BsonSymbol"
+          },
+          "asBsonTimestamp": {
+            "$ref": "#/components/schemas/BsonTimestamp"
+          },
+          "asBsonUndefined": {
+            "$ref": "#/components/schemas/BsonUndefined"
+          },
+          "asBsonValue": {
+            "$ref": "#/components/schemas/BsonValue"
+          },
+          "asByteArray": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asDecimal": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asDouble": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "asGuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "asInt32": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "asInt64": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "asLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "asNullableBoolean": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableDecimal128": {
+            "$ref": "#/components/schemas/Decimal128"
+          },
+          "asNullableDouble": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableGuid": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt32": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableInt64": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableLocalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asNullableObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asNullableUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asObjectId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "asRegex": {
+            "$ref": "#/components/schemas/Regex"
+          },
+          "asString": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "asUniversalTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "bsonType": {
+            "$ref": "#/components/schemas/BsonType"
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonArray": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonBinaryData": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonDocument": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScript": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonJavaScriptWithScope": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMaxKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonMinKey": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonNull": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonRegularExpression": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonSymbol": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonTimestamp": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isBsonUndefined": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDecimal128": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isDouble": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isGuid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt32": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInt64": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isNumeric": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isObjectId": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isString": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isValidDateTime": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePropertyRequest": {
+        "type": "object",
+        "properties": {
+          "formData": {
+            "$ref": "#/components/schemas/PropertyFormData"
+          },
+          "location": {
+            "$ref": "#/components/schemas/GeoLocation"
+          },
+          "submittedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Decimal128": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "ForgotPasswordRequest": {
         "type": "object",
         "properties": {
           "email": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoJson2DCoordinates": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoJson2DCoordinatesGeoJsonBoundingBox": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "$ref": "#/components/schemas/GeoJson2DCoordinates"
+          },
+          "min": {
+            "$ref": "#/components/schemas/GeoJson2DCoordinates"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoJson2DCoordinatesGeoJsonPoint": {
+        "type": "object",
+        "properties": {
+          "boundingBox": {
+            "$ref": "#/components/schemas/GeoJson2DCoordinatesGeoJsonBoundingBox"
+          },
+          "coordinateReferenceSystem": {
+            "$ref": "#/components/schemas/GeoJsonCoordinateReferenceSystem"
+          },
+          "extraMembers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BsonElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/GeoJson2DCoordinates"
+          },
+          "type": {
+            "$ref": "#/components/schemas/GeoJsonObjectType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoJsonCoordinateReferenceSystem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoJsonObjectType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "GeoLocation": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "format": "double"
+          },
+          "lng": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -190,6 +3873,223 @@
         },
         "additionalProperties": false
       },
+      "ObjectId": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "creationTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Property": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "propertyCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "youAreHereTo": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "priceUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "area": {
+            "type": "number",
+            "format": "double"
+          },
+          "areaUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "bedrooms": {
+            "type": "string",
+            "nullable": true
+          },
+          "bathrooms": {
+            "type": "string",
+            "nullable": true
+          },
+          "facing": {
+            "type": "string",
+            "nullable": true
+          },
+          "floorNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalFloors": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "locality": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/GeoJson2DCoordinatesGeoJsonPoint"
+          },
+          "contactPersonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "whatsapp": {
+            "type": "string",
+            "nullable": true
+          },
+          "uploadedImages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PropertyFormData": {
+        "type": "object",
+        "properties": {
+          "propertyCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "youAreHereTo": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "priceUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "area": {
+            "type": "number",
+            "format": "double"
+          },
+          "areaUnit": {
+            "type": "string",
+            "nullable": true
+          },
+          "bedrooms": {
+            "type": "string",
+            "nullable": true
+          },
+          "bathrooms": {
+            "type": "string",
+            "nullable": true
+          },
+          "facing": {
+            "type": "string",
+            "nullable": true
+          },
+          "floorNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalFloors": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "locality": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactPersonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "whatsapp": {
+            "type": "string",
+            "nullable": true
+          },
+          "uploadedImages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RefreshTokenRequest": {
         "type": "object",
         "properties": {
@@ -199,6 +4099,41 @@
           }
         },
         "additionalProperties": false
+      },
+      "Regex": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "$ref": "#/components/schemas/RegexOptions"
+          },
+          "rightToLeft": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "matchTimeout": {
+            "type": "string",
+            "format": "date-span",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegexOptions": {
+        "enum": [
+          0,
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64,
+          256,
+          512,
+          1024
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "RegisterRequest": {
         "type": "object",

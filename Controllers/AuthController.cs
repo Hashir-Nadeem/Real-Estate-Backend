@@ -112,7 +112,6 @@ namespace Real_Estate_WebAPI.Controllers
             }
         }
 
-
     }
 
 }

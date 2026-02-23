@@ -99,7 +99,6 @@ namespace Real_Estate_WebAPI.Services.Auth
                 AccessTokenExpiresAt = refreshToken.ExpiresAt
             };
         }
-
         public async Task ForgotPasswordAsync(string email)
         {
             var user = await _users.GetByEmailAsync(email.ToLower());
@@ -116,28 +115,95 @@ namespace Real_Estate_WebAPI.Services.Auth
 
             await _users.UpdateAsync(user);
 
+            // ✅ Get frontend URL from configuration
+            var frontendUrl = "http://localhost:3000";
+
             var resetLink =
-                $"https://yourfrontend.com/reset-password?token={token}";
+                $"{frontendUrl}/reset-password?token={Uri.EscapeDataString(token)}";
+
+            var htmlBody = $@"
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Reset Password</title>
+</head>
+<body style='margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,sans-serif;'>
+
+<table width='100%' cellpadding='0' cellspacing='0' style='padding:40px 0;background-color:#f4f4f4;'>
+<tr>
+<td align='center'>
+
+<table width='500' cellpadding='0' cellspacing='0' 
+style='background:#ffffff;border-radius:8px;padding:40px;'>
+
+<tr>
+<td align='center' style='padding-bottom:20px;'>
+<h2 style='margin:0;color:#111;'>Reset Your Password</h2>
+</td>
+</tr>
+
+<tr>
+<td style='color:#555;font-size:15px;line-height:1.6;padding-bottom:20px;'>
+We received a request to reset your password.
+Click the button below to create a new password.
+</td>
+</tr>
+
+<tr>
+<td align='center' style='padding:20px 0;'>
+<a href='{resetLink}' 
+style='background-color:#dc2626;color:#ffffff;
+text-decoration:none;padding:14px 28px;
+border-radius:6px;font-weight:bold;
+display:inline-block;font-size:14px;'>
+Reset Password
+</a>
+</td>
+</tr>
+
+<tr>
+<td style='color:#777;font-size:13px;line-height:1.6;padding-top:10px;'>
+This link will expire in <strong>1 hour</strong>.
+If you did not request this request, please ignore this email.
+</td>
+</tr>
+
+<tr>
+<td style='padding-top:25px;font-size:12px;color:#999;word-break:break-all;'>
+If the button doesn’t work, copy and paste this link:<br/>
+<a href='{resetLink}' style='color:#dc2626;'>{resetLink}</a>
+</td>
+</tr>
+
+<tr>
+<td align='center' style='padding-top:30px;font-size:12px;color:#aaa;'>
+© {DateTime.UtcNow.Year} Zamindar. All rights reserved.
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>";
 
             await _email.SendAsync(
                 user.Email,
                 "Reset Your Password",
-                $"Click here to reset: <a href='{resetLink}'>Reset Password</a>");
+                htmlBody);
         }
-
         public async Task ResetPasswordAsync(
-     string token,
-     string newPassword)
+          string token,
+          string newPassword)
         {
-            // 🔥 HASH TOKEN HERE
-            using var sha = System.Security.Cryptography.SHA256.Create();
+            var decodedToken = Uri.UnescapeDataString(token);
 
-            var hashedBytes = sha.ComputeHash(
-                System.Text.Encoding.UTF8.GetBytes(token));
-
-            var hashedToken = Convert.ToBase64String(hashedBytes);
-
-            var user = await _users.GetByResetTokenAsync(hashedToken);
+            var user = await _users.GetByResetTokenAsync(decodedToken);
 
             if (user == null ||
                 user.PasswordResetTokenExpiresAt <= DateTime.UtcNow)
@@ -145,15 +211,12 @@ namespace Real_Estate_WebAPI.Services.Auth
                 throw new Exception("Invalid or expired token.");
             }
 
-            // ✅ Hash password
             user.PasswordHash =
                 BCrypt.Net.BCrypt.HashPassword(newPassword);
 
-            // ✅ Destroy reset token
             user.PasswordResetToken = null;
             user.PasswordResetTokenExpiresAt = null;
 
-            // 🔥 SECURITY: revoke ALL sessions
             user.RefreshTokens?.ForEach(t =>
             {
                 t.IsRevoked = true;
@@ -163,12 +226,14 @@ namespace Real_Estate_WebAPI.Services.Auth
             await _users.UpdateAsync(user);
         }
 
-
-
         private string GeneratePasswordResetToken()
         {
-            return Convert.ToBase64String(
-                RandomNumberGenerator.GetBytes(64));
+            var bytes = RandomNumberGenerator.GetBytes(32);
+
+            return Convert.ToBase64String(bytes)
+                .Replace("+", "-")
+                .Replace("/", "_")
+                .Replace("=", "");
         }
 
         public async Task<AuthResponse> RefreshTokenAsync(string refreshToken)
