@@ -20,15 +20,14 @@ namespace Real_Estate_WebAPI.Interfaces
         Task DeleteAsync(string id);
 
         Task<List<Property>> SearchAsync(
-            string city,
-            string locality,
-            decimal? minPrice,
-            decimal? maxPrice,
-            string bedrooms,
-            string transactionType,
-            int page,
-            int pageSize);
-
+        string? city,
+        string? locality,
+        decimal? minPrice,
+        decimal? maxPrice,
+        string? bedrooms,
+        string? transactionType,
+        int page,
+        int pageSize);
         Task<List<Property>> GetNearbyAsync(
             double latitude,
             double longitude,

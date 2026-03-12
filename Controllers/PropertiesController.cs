@@ -23,55 +23,42 @@ namespace Real_Estate_WebAPI.Controllers
         // CREATE PROPERTY
         // ======================================
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Create(
-         CreatePropertyRequest request)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (userId == null)
-                return Unauthorized();
+        [HttpPost]
+        public async Task<IActionResult> Create(CreatePropertyRequest request)
+        {
+           
 
             if (request.FormData == null)
                 return BadRequest("Invalid payload");
 
             var property = new Property
             {
-                UserId = userId,
-
                 PropertyCategory = request.FormData.PropertyCategory,
+                UserId = null,
                 YouAreHereTo = request.FormData.YouAreHereTo,
                 Title = request.FormData.Title,
                 Description = request.FormData.Description,
-
                 Price = request.FormData.Price,
                 PriceUnit = request.FormData.PriceUnit,
-
                 Area = request.FormData.Area,
                 AreaUnit = request.FormData.AreaUnit,
-
                 Bedrooms = request.FormData.Bedrooms,
                 Bathrooms = request.FormData.Bathrooms,
                 Facing = request.FormData.Facing,
                 FloorNumber = request.FormData.FloorNumber,
                 TotalFloors = request.FormData.TotalFloors,
-
                 FullAddress = request.FormData.FullAddress,
                 City = request.FormData.City,
                 Locality = request.FormData.Locality,
-
                 ContactPersonName = request.FormData.ContactPersonName,
                 Email = request.FormData.Email,
                 Whatsapp = request.FormData.Whatsapp,
-
                 UploadedImages = request.FormData.UploadedImages ?? new List<string>(),
-
-                Status = "Pending",
+                Status = "Approved",
                 CreatedAt = DateTime.UtcNow
             };
 
-            // 🔥 Convert to GeoJSON (Mongo requires lng first!)
             if (request.Location != null)
             {
                 property.Location =
@@ -85,20 +72,16 @@ namespace Real_Estate_WebAPI.Controllers
 
             await _repository.CreateAsync(property);
 
-            return Ok(new
-            {
-                message = "Property submitted successfully"
-            });
+            return Ok(new { message = "Property submitted successfully" });
         }
-
         // ======================================
         // GET ALL (Public Approved)
         // ======================================
 
         [HttpGet]
         public async Task<IActionResult> GetAll(
-            int page = 1,
-            int pageSize = 10)
+       int page = 1,
+       int pageSize = 10)
         {
             var properties = await _repository.GetAllAsync(page, pageSize);
             return Ok(properties);
@@ -123,7 +106,7 @@ namespace Real_Estate_WebAPI.Controllers
         // MY PROPERTIES
         // ======================================
 
-        [Authorize]
+      
         [HttpGet("my")]
         public async Task<IActionResult> GetMyProperties()
         {
@@ -138,7 +121,7 @@ namespace Real_Estate_WebAPI.Controllers
         // UPDATE PROPERTY
         // ======================================
 
-        [Authorize]
+      
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(
             string id,
@@ -167,7 +150,7 @@ namespace Real_Estate_WebAPI.Controllers
         // DELETE PROPERTY
         // ======================================
 
-        [Authorize]
+      
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -191,16 +174,20 @@ namespace Real_Estate_WebAPI.Controllers
         // ======================================
 
         [HttpGet("search")]
+        [AllowAnonymous]
         public async Task<IActionResult> Search(
-            string city,
-            string locality,
-            decimal? minPrice,
-            decimal? maxPrice,
-            string bedrooms,
-            string transactionType,
-            int page = 1,
-            int pageSize = 10)
+       string? city,
+       string? locality,
+       decimal? minPrice,
+       decimal? maxPrice,
+       string? bedrooms,
+       string? transactionType,
+       int page = 1,
+       int pageSize = 10)
         {
+            if (page < 1) page = 1;
+            if (pageSize < 1) pageSize = 10;
+
             var result = await _repository.SearchAsync(
                 city,
                 locality,

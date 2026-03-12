@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Becklicious\\Documents\\GitHub\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj": {}
+    "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Becklicious\\Documents\\GitHub\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj": {
+    "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Becklicious\\Documents\\GitHub\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
         "projectName": "Real_Estate_WebAPI",
-        "projectPath": "C:\\Users\\Becklicious\\Documents\\GitHub\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
+        "projectPath": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
         "packagesPath": "C:\\Users\\Becklicious\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Becklicious\\Documents\\GitHub\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,6 +65,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.6.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

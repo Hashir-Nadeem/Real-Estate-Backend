@@ -12,6 +12,7 @@ namespace Real_Estate_WebAPI.DTOs.Property
     public class PropertyFormData
     {
         public string PropertyCategory { get; set; }
+        public string? UserId { get; set; }
         public string YouAreHereTo { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

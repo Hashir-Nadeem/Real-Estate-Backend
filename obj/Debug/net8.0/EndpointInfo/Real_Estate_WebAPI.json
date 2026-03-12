@@ -4008,6 +4008,10 @@
             "type": "string",
             "nullable": true
           },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
           "youAreHereTo": {
             "type": "string",
             "nullable": true

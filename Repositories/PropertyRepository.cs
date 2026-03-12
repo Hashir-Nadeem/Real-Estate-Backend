@@ -72,35 +72,60 @@ namespace Real_Estate_WebAPI.Repositories
         // =========================
 
         public async Task<List<Property>> SearchAsync(
-            string city,
-            string locality,
-            decimal? minPrice,
-            decimal? maxPrice,
-            string bedrooms,
-            string transactionType,
-            int page,
-            int pageSize)
+      string city,
+      string locality,
+      decimal? minPrice,
+      decimal? maxPrice,
+      string bedrooms,
+      string transactionType,
+      int page,
+      int pageSize)
         {
+            if (page < 1) page = 1;
+            if (pageSize < 1) pageSize = 10;
+
             var builder = Builders<Property>.Filter;
+
+            // Always filter only Approved
             var filter = builder.Eq(p => p.Status, "Approved");
 
-            if (!string.IsNullOrEmpty(city))
-                filter &= builder.Eq(p => p.City, city);
+            // ✅ CITY
+            if (!string.IsNullOrWhiteSpace(city) &&
+                !city.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
+                filter &= builder.Regex(p => p.City,
+                    new MongoDB.Bson.BsonRegularExpression(city, "i"));
+            }
 
-            if (!string.IsNullOrEmpty(locality))
-                filter &= builder.Eq(p => p.Locality, locality);
+            // ✅ LOCALITY
+            if (!string.IsNullOrWhiteSpace(locality) &&
+                !locality.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
+                filter &= builder.Regex(p => p.Locality,
+                    new MongoDB.Bson.BsonRegularExpression(locality, "i"));
+            }
 
+            // ✅ MIN PRICE
             if (minPrice.HasValue)
                 filter &= builder.Gte(p => p.Price, minPrice.Value);
 
+            // ✅ MAX PRICE
             if (maxPrice.HasValue)
                 filter &= builder.Lte(p => p.Price, maxPrice.Value);
 
-            if (!string.IsNullOrEmpty(bedrooms))
+            // ✅ BEDROOMS
+            if (!string.IsNullOrWhiteSpace(bedrooms) &&
+                !bedrooms.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
                 filter &= builder.Eq(p => p.Bedrooms, bedrooms);
+            }
 
-            if (!string.IsNullOrEmpty(transactionType))
+            // ✅ TRANSACTION TYPE
+            if (!string.IsNullOrWhiteSpace(transactionType) &&
+                !transactionType.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
                 filter &= builder.Eq(p => p.YouAreHereTo, transactionType);
+            }
 
             return await _properties
                 .Find(filter)
@@ -109,7 +134,6 @@ namespace Real_Estate_WebAPI.Repositories
                 .Limit(pageSize)
                 .ToListAsync();
         }
-
         // =========================
         // GEO SEARCH
         // =========================
