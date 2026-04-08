@@ -34,7 +34,7 @@ namespace Real_Estate_WebAPI.Repositories
         }
 
         public async Task<List<Property>> GetAllAsync(
-            int page,
+            int page, 
             int pageSize)
         {
             return await _properties

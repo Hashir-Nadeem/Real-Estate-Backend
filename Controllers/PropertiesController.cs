@@ -81,7 +81,7 @@ namespace Real_Estate_WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(
        int page = 1,
-       int pageSize = 10)
+       int pageSize = 1000)
         {
             var properties = await _repository.GetAllAsync(page, pageSize);
             return Ok(properties);
