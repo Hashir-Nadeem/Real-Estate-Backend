@@ -1,7 +1,9 @@
 ﻿using BCrypt.Net;
+using Microsoft.AspNetCore.Mvc;
 using Real_Estate_WebAPI.DTOs.Auth;
 using Real_Estate_WebAPI.Interfaces;
 using Real_Estate_WebAPI.Models;
+using Real_Estate_WebAPI.Repositories;
 using Real_Estate_WebAPI.Services.Email;
 using System.Security.Cryptography;
 using static System.Net.WebRequestMethods;
@@ -43,7 +45,7 @@ namespace Real_Estate_WebAPI.Services.Auth
                 Email = request.Email.ToLowerInvariant().Trim(),
                 PhoneNumber = request.PhoneNumber,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
-                Role = "User"
+                Role = request.Role
             };
 
             var refreshToken = _tokens.GenerateRefreshToken(request.RememberMe);
@@ -64,7 +66,6 @@ namespace Real_Estate_WebAPI.Services.Auth
                 AccessTokenExpiresAt = refreshToken.ExpiresAt
             };
         }
-
         public async Task<AuthResponse> LoginAsync(LoginRequest request)
         {
             var normalized = request.EmailOrPhone.ToLowerInvariant().Trim();
@@ -96,7 +97,16 @@ namespace Real_Estate_WebAPI.Services.Auth
             {
                 AccessToken = accessToken,
                 RefreshToken = refreshToken.Token,
-                AccessTokenExpiresAt = refreshToken.ExpiresAt
+                AccessTokenExpiresAt = refreshToken.ExpiresAt,
+
+                User = new
+                {
+                    user.Id,
+                    user.FullName,
+                    user.Email,
+                    user.PhoneNumber,
+                    user.Role // ✅ IMPORTANT
+                }
             };
         }
         public async Task ForgotPasswordAsync(string email)
@@ -285,6 +295,34 @@ If the button doesn’t work, copy and paste this link:<br/>
                 RefreshToken = newRefreshToken.Token,
                 AccessTokenExpiresAt = newRefreshToken.ExpiresAt
             };
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            var users = await _users.GetAllUsersAsync();
+
+            return users.Select(user => new User
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Role = user.Role,
+                IsActive = user.IsActive,
+                CreatedAt = user.CreatedAt
+            }).ToList();
+        }
+
+        public async Task<bool> DeleteUserAsync(string userId)
+        {
+            var user = await _users.GetByIdAsync(userId);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            await _users.DeleteUserWithPropertiesAsync(userId);
+
+            return true;
         }
 
     }

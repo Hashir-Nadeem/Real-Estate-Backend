@@ -82,17 +82,17 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var initializer = scope.ServiceProvider
-//        .GetRequiredService<DatabaseInitializer>();
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider
+        .GetRequiredService<DatabaseInitializer>();
 
-//  //  await initializer.InitializeAsync();
-//}
-//if (app.Environment.IsDevelopment())
-//{
-//   // app.UseHttpsRedirection();
-//}
+   await initializer.InitializeAsync();
+}
+if (app.Environment.IsDevelopment())
+{
+     app.UseHttpsRedirection();
+}
 
 app.UseAuthentication();   // FIRST
 app.UseAuthorization();    // SECOND

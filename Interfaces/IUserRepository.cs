@@ -21,7 +21,8 @@ namespace Real_Estate_WebAPI.Interfaces
         Task<User?> GetByResetTokenAsync(string token);
 
         Task<User?> GetUserByRefreshTokenAsync(string refreshToken);
-
+        Task<List<User>> GetAllUsersAsync();
+        Task DeleteUserWithPropertiesAsync(string userId);
 
     }
 

@@ -112,6 +112,20 @@ namespace Real_Estate_WebAPI.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await _auth.GetAllUsersAsync();
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            await _auth.DeleteUserAsync(id);
+            return Ok(new { message = "User and properties deleted successfully" });
+        }
+
     }
 
 }

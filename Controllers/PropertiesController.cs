@@ -35,7 +35,7 @@ namespace Real_Estate_WebAPI.Controllers
             var property = new Property
             {
                 PropertyCategory = request.FormData.PropertyCategory,
-                UserId = null,
+                UserId = request.FormData.UserId,
                 YouAreHereTo = request.FormData.YouAreHereTo,
                 Title = request.FormData.Title,
                 Description = request.FormData.Description,
@@ -154,15 +154,13 @@ namespace Real_Estate_WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+         
             var property = await _repository.GetByIdAsync(id);
 
             if (property == null)
                 return NotFound();
 
-            if (property.UserId != userId)
-                return Forbid();
+          
 
             await _repository.DeleteAsync(id);
 
@@ -218,5 +216,8 @@ namespace Real_Estate_WebAPI.Controllers
 
             return Ok(properties);
         }
+
+
+     
     }
 }

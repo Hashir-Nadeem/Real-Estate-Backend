@@ -5,13 +5,16 @@ using Real_Estate_WebAPI.Models;
 using Real_Estate_WebAPI.Settings;
 using System.Security.Cryptography;
 using System.Text;
+using SendGrid.Helpers.Mail;
 
 
 namespace Real_Estate_WebAPI.Repositories
 {
     public class UserRepository : IUserRepository
     {
+
         private readonly IMongoCollection<User> _users;
+        private readonly IMongoCollection<Property> _properties;
 
         public UserRepository(
             IMongoClient mongoClient,
@@ -21,6 +24,8 @@ namespace Real_Estate_WebAPI.Repositories
 
             _users = database.GetCollection<User>(
                 settings.Value.UsersCollection);
+
+            _properties = database.GetCollection<Property>("Properties"); // ⚠️ match your collection name
         }
 
         public async Task<User?> GetByIdAsync(string id)
@@ -39,6 +44,22 @@ namespace Real_Estate_WebAPI.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _users
+                .Find(_ => true)
+                .Project(user => new User
+                {
+                    Id = user.Id,
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    Role = user.Role,
+                    IsActive = user.IsActive,
+                    CreatedAt = user.CreatedAt
+                })
+                .ToListAsync();
+        }
         public async Task<User?> GetByPhoneAsync(string phone)
         {
             return await _users
@@ -110,6 +131,15 @@ namespace Real_Estate_WebAPI.Repositories
             return await _users
                 .Find(u => u.RefreshTokens.Any(t => t.Token == refreshToken))
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task DeleteUserWithPropertiesAsync(string userId)
+        {
+            // ✅ Delete all properties of this user
+            await _properties.DeleteManyAsync(p => p.UserId == userId);
+
+            // ✅ Delete user
+            await _users.DeleteOneAsync(u => u.Id == userId);
         }
 
 
