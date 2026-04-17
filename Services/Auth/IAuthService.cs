@@ -14,7 +14,10 @@ namespace Real_Estate_WebAPI.Services.Auth
         Task<AuthResponse> RefreshTokenAsync(string refreshToken);
 
         Task<List<User>> GetAllUsersAsync();
+
+        Task<User> GetUserByIdAsync(string id);
         Task<bool> DeleteUserAsync(string userId);
+        Task LogoutAsync(string refreshToken);
     }
 
 }

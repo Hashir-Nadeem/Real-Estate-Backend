@@ -1,16 +1,11 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿
 using MongoDB.Driver.GeoJsonObjectModel;
 
-namespace Real_Estate_WebAPI.Models
+namespace Real_Estate_WebAPI.Repositories
 {
-    public class Property
+    public class PropertyDetailsDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
         public string UserId { get; set; }
 
         public string PropertyCategory { get; set; }
@@ -35,7 +30,6 @@ namespace Real_Estate_WebAPI.Models
         public string City { get; set; }
         public string Locality { get; set; }
 
-        // 🔥 Proper GeoJSON format
         public GeoJsonPoint<GeoJson2DCoordinates> Location { get; set; }
 
         public string ContactPersonName { get; set; }
@@ -44,15 +38,10 @@ namespace Real_Estate_WebAPI.Models
 
         public List<string> UploadedImages { get; set; } = new();
 
-        public string Status { get; set; } = "Pending";
+        public string Status { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-      
-    }
-
-    public class GeoLocation
-    {
-        public double Lat { get; set; }
-        public double Lng { get; set; }
+        // ✅ DISPLAY ONLY FIELD
+        public string CreatedByUser { get; set; }
     }
 }

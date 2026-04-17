@@ -84,8 +84,105 @@ namespace Real_Estate_WebAPI.Services.Auth
             if (!validPassword)
                 throw new Exception("Invalid credentials.");
 
-            var refreshToken = _tokens.GenerateRefreshToken(request.RememberMe);
+            // ✅ FIRST LOGIN ADMIN CHECK
+            if (string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase) && !user.IsActive)
+            {
+                var token = GeneratePasswordResetToken();
 
+                user.PasswordResetToken = token;
+                user.PasswordResetTokenExpiresAt =
+                    DateTime.UtcNow.AddHours(1);
+
+                await _users.UpdateAsync(user);
+
+                // ✅ Frontend URL (move to config later)
+                var frontendUrl = "http://localhost:3000";
+
+                var resetLink =
+                    $"{frontendUrl}/reset-password?token={Uri.EscapeDataString(token)}";
+
+                var htmlBody = $@"
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Reset Password</title>
+</head>
+<body style='margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,sans-serif;'>
+
+<table width='100%' cellpadding='0' cellspacing='0' style='padding:40px 0;background-color:#f4f4f4;'>
+<tr>
+<td align='center'>
+
+<table width='500' cellpadding='0' cellspacing='0' 
+style='background:#ffffff;border-radius:8px;padding:40px;'>
+
+<tr>
+<td align='center' style='padding-bottom:20px;'>
+<h2 style='margin:0;color:#111;'>Set Your Password</h2>
+</td>
+</tr>
+
+<tr>
+<td style='color:#555;font-size:15px;line-height:1.6;padding-bottom:20px;'>
+This is your first login as an admin.<br/>
+Please click the button below to set your password and activate your account.
+</td>
+</tr>
+
+<tr>
+<td align='center' style='padding:20px 0;'>
+<a href='{resetLink}' 
+style='background-color:#dc2626;color:#ffffff;
+text-decoration:none;padding:14px 28px;
+border-radius:6px;font-weight:bold;
+display:inline-block;font-size:14px;'>
+Set Password
+</a>
+</td>
+</tr>
+
+<tr>
+<td style='color:#777;font-size:13px;line-height:1.6;padding-top:10px;'>
+This link will expire in <strong>1 hour</strong>.
+If you did not request this, please ignore this email.
+</td>
+</tr>
+
+<tr>
+<td style='padding-top:25px;font-size:12px;color:#999;word-break:break-all;'>
+If the button doesn’t work, copy and paste this link:<br/>
+<a href='{resetLink}' style='color:#dc2626;'>{resetLink}</a>
+</td>
+</tr>
+
+<tr>
+<td align='center' style='padding-top:30px;font-size:12px;color:#aaa;'>
+© {DateTime.UtcNow.Year} Zamindar. All rights reserved.
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>";
+
+                await _email.SendAsync(
+                    user.Email,
+                    "Set Your Admin Password",
+                    htmlBody);
+
+                // ❌ STOP LOGIN
+                throw new Exception("FIRST_LOGIN_RESET_REQUIRED");
+            }
+
+            // ✅ NORMAL LOGIN FLOW
+            var refreshToken = _tokens.GenerateRefreshToken(request.RememberMe);
 
             user.RefreshTokens.Add(refreshToken);
 
@@ -105,10 +202,11 @@ namespace Real_Estate_WebAPI.Services.Auth
                     user.FullName,
                     user.Email,
                     user.PhoneNumber,
-                    user.Role // ✅ IMPORTANT
+                    user.Role
                 }
             };
         }
+
         public async Task ForgotPasswordAsync(string email)
         {
             var user = await _users.GetByEmailAsync(email.ToLower());
@@ -207,9 +305,7 @@ If the button doesn’t work, copy and paste this link:<br/>
                 "Reset Your Password",
                 htmlBody);
         }
-        public async Task ResetPasswordAsync(
-          string token,
-          string newPassword)
+        public async Task ResetPasswordAsync( string token,string newPassword)
         {
             var decodedToken = Uri.UnescapeDataString(token);
 
@@ -232,6 +328,8 @@ If the button doesn’t work, copy and paste this link:<br/>
                 t.IsRevoked = true;
                 t.RevokedReason = "Password reset";
             });
+
+            user.IsActive = true;
 
             await _users.UpdateAsync(user);
         }
@@ -313,6 +411,16 @@ If the button doesn’t work, copy and paste this link:<br/>
             }).ToList();
         }
 
+        public async Task<User> GetUserByIdAsync(string id)
+        {
+            var user = await _users.GetByIdAsync(id);
+
+            if (user == null)
+                return null;
+
+            return user;
+        }
+
         public async Task<bool> DeleteUserAsync(string userId)
         {
             var user = await _users.GetByIdAsync(userId);
@@ -321,8 +429,23 @@ If the button doesn’t work, copy and paste this link:<br/>
                 throw new Exception("User not found");
 
             await _users.DeleteUserWithPropertiesAsync(userId);
+            // ✅ Logout user from all devices
+            await _users.RemoveRefreshTokenAsync(userId);
 
             return true;
+        }
+
+        public async Task LogoutAsync(string refreshToken)
+        {
+            if (string.IsNullOrWhiteSpace(refreshToken))
+                throw new Exception("Refresh token is required");
+
+            var user = await _users.GetByRefreshTokenAsync(refreshToken);
+
+            if (user == null)
+                throw new Exception("Invalid refresh token");
+
+            await _users.RemoveRefreshTokenAsync(user.Id);
         }
 
     }

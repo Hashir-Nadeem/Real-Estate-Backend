@@ -1,4 +1,5 @@
 ﻿using Real_Estate_WebAPI.Models;
+using Real_Estate_WebAPI.Repositories;
 
 namespace Real_Estate_WebAPI.Interfaces
 {
@@ -11,6 +12,7 @@ namespace Real_Estate_WebAPI.Interfaces
         Task<List<Property>> GetAllAsync(
             int page,
             int pageSize);
+        Task<List<PropertyDetailsDto>> GetAllPropertyDetailsAsync(int page, int pageSize);
 
         Task<List<Property>> GetByUserAsync(
             string userId);
@@ -19,6 +21,9 @@ namespace Real_Estate_WebAPI.Interfaces
 
         Task DeleteAsync(string id);
 
+        Task<PropertyDetailsDto?> GetPropertyDetailsAsync(string id);
+        // ✅ NEW: Update status (BEST approach)
+        Task<bool> UpdateStatusAsync(string id, string status);
         Task<List<Property>> SearchAsync(
         string? city,
         string? locality,

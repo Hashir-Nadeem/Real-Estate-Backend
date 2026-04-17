@@ -55,7 +55,7 @@ namespace Real_Estate_WebAPI.Controllers
                 Email = request.FormData.Email,
                 Whatsapp = request.FormData.Whatsapp,
                 UploadedImages = request.FormData.UploadedImages ?? new List<string>(),
-                Status = "Approved",
+                Status = "Pending",
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -83,8 +83,36 @@ namespace Real_Estate_WebAPI.Controllers
        int page = 1,
        int pageSize = 1000)
         {
+            var properties = await _repository.GetAllPropertyDetailsAsync(page, pageSize);
+            return Ok(properties);
+        }
+
+
+        [HttpGet("GetAllProperties")]
+        public async Task<IActionResult> GetAllProperties(
+       int page = 1,
+       int pageSize = 1000)
+        {
             var properties = await _repository.GetAllAsync(page, pageSize);
             return Ok(properties);
+        }
+
+        [HttpPut("status/{id}")]
+        public async Task<IActionResult> UpdateStatus(string id, string status)
+        {
+            if (string.IsNullOrEmpty(status))
+                return BadRequest(new { message = "Status is required" });
+
+            // ✅ optional validation
+            if (status != "Approved" && status != "Pending")
+                return BadRequest(new { message = "Invalid status" });
+
+            var result = await _repository.UpdateStatusAsync(id, status);
+
+            if (!result)
+                return NotFound(new { message = "Property not found" });
+
+            return Ok(new { message = "Status updated successfully" });
         }
 
         // ======================================
@@ -94,7 +122,7 @@ namespace Real_Estate_WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            var property = await _repository.GetByIdAsync(id);
+            var property = await _repository.GetPropertyDetailsAsync(id);
 
             if (property == null)
                 return NotFound();

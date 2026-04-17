@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Real_Estate_WebAPI.DTOs.Auth;
+using Real_Estate_WebAPI.Models;
 using Real_Estate_WebAPI.Services.Auth;
 
 
@@ -44,9 +45,19 @@ namespace Real_Estate_WebAPI.Controllers
 
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // NEVER reveal why login failed
+                // ✅ Handle first-time admin login separately
+                if (ex.Message == "FIRST_LOGIN_RESET_REQUIRED")
+                {
+                    return Unauthorized(new
+                    {
+                        message = "Your account is not activated. Please check your email to set your password.",
+                        code = "FIRST_LOGIN"
+                    });
+                }
+
+                // ❌ Default (hide reason)
                 return Unauthorized(new
                 {
                     message = "Invalid credentials"
@@ -119,11 +130,44 @@ namespace Real_Estate_WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await _auth.GetUserByIdAsync(id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             await _auth.DeleteUserAsync(id);
             return Ok(new { message = "User and properties deleted successfully" });
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout(LogoutRequest request)
+        {
+            try
+            {
+                await _auth.LogoutAsync(request.RefreshToken);
+
+                return Ok(new
+                {
+                    message = "Logged out successfully"
+                });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    message = "Logout failed"
+                });
+            }
         }
 
     }

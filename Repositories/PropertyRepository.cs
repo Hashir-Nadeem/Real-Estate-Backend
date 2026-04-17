@@ -4,21 +4,26 @@ using MongoDB.Driver;
 using Real_Estate_WebAPI.Interfaces;
 using Real_Estate_WebAPI.Models;
 using Real_Estate_WebAPI.Settings;
+using Real_Estate_WebAPI.Services.Auth;
 
 namespace Real_Estate_WebAPI.Repositories
 {
     public class PropertyRepository : IPropertyRepository
     {
         private readonly IMongoCollection<Property> _properties;
+        private readonly IAuthService _auth;
 
         public PropertyRepository(
             IMongoClient client,
-            IOptions<MongoDbSettings> settings)
+            IOptions<MongoDbSettings> settings,
+            IAuthService auth)
         {
             var database = client.GetDatabase(settings.Value.DatabaseName);
 
             _properties = database.GetCollection<Property>(
                 settings.Value.PropertiesCollection);
+
+            _auth = auth; // ✅ correct assignment
         }
 
         public async Task CreateAsync(Property property)
@@ -33,6 +38,61 @@ namespace Real_Estate_WebAPI.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<PropertyDetailsDto?> GetPropertyDetailsAsync(string id)
+        {
+            // 🔹 Get property
+            var property = await GetByIdAsync(id);
+
+            if (property == null)
+                return null;
+
+            // 🔹 Get user (from AuthService)
+            var user = await _auth.GetUserByIdAsync(property.UserId);
+
+            // 🔹 Map safely
+            return new PropertyDetailsDto
+            {
+                Id = property.Id,
+                UserId = property.UserId,
+
+                PropertyCategory = property.PropertyCategory,
+                TransactionType = property.TransactionType,
+                YouAreHereTo = property.YouAreHereTo,
+                Title = property.Title,
+                Description = property.Description,
+
+                Price = property.Price,
+                PriceUnit = property.PriceUnit,
+
+                Area = property.Area,
+                AreaUnit = property.AreaUnit,
+
+                Bedrooms = property.Bedrooms,
+                Bathrooms = property.Bathrooms,
+                Facing = property.Facing,
+                FloorNumber = property.FloorNumber,
+                TotalFloors = property.TotalFloors,
+
+                FullAddress = property.FullAddress,
+                City = property.City,
+                Locality = property.Locality,
+
+                Location = property.Location,
+
+                ContactPersonName = property.ContactPersonName,
+                Email = property.Email,
+                Whatsapp = property.Whatsapp,
+
+                UploadedImages = property.UploadedImages,
+
+                Status = property.Status,
+                CreatedAt = property.CreatedAt,
+
+                // ✅ SAFE + CORRECT
+                CreatedByUser = user?.FullName ?? "Unknown"
+            };
+        }
+
         public async Task<List<Property>> GetAllAsync(
             int page, 
             int pageSize)
@@ -44,7 +104,80 @@ namespace Real_Estate_WebAPI.Repositories
                 .Limit(pageSize)
                 .ToListAsync();
         }
+        public async Task<bool> UpdateStatusAsync(string id, string status)
+        {
+            var update = Builders<Property>.Update.Set(p => p.Status, status);
 
+            var result = await _properties.UpdateOneAsync(
+                p => p.Id == id,
+                update
+            );
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<List<PropertyDetailsDto>> GetAllPropertyDetailsAsync(
+    int page,
+    int pageSize)
+        {
+            var properties = await _properties
+      .Find(_ => true) // explicit "get all"
+      .SortByDescending(p => p.CreatedAt)
+      .Skip((page - 1) * pageSize)
+      .Limit(pageSize)
+      .ToListAsync();
+
+            var result = new List<PropertyDetailsDto>();
+
+            foreach (var property in properties)
+            {
+                var user = await _auth.GetUserByIdAsync(property.UserId);
+
+                result.Add(new PropertyDetailsDto
+                {
+                    Id = property.Id,
+                    UserId = property.UserId,
+
+                    PropertyCategory = property.PropertyCategory,
+                    TransactionType = property.TransactionType,
+                    YouAreHereTo = property.YouAreHereTo,
+                    Title = property.Title,
+                    Description = property.Description,
+
+                    Price = property.Price,
+                    PriceUnit = property.PriceUnit,
+
+                    Area = property.Area,
+                    AreaUnit = property.AreaUnit,
+
+                    Bedrooms = property.Bedrooms,
+                    Bathrooms = property.Bathrooms,
+                    Facing = property.Facing,
+                    FloorNumber = property.FloorNumber,
+                    TotalFloors = property.TotalFloors,
+
+                    FullAddress = property.FullAddress,
+                    City = property.City,
+                    Locality = property.Locality,
+
+                    Location = property.Location,
+
+                    ContactPersonName = property.ContactPersonName,
+                    Email = property.Email,
+                    Whatsapp = property.Whatsapp,
+
+                    UploadedImages = property.UploadedImages,
+
+                    Status = property.Status,
+                    CreatedAt = property.CreatedAt,
+
+                    // ✅ SAFE + CORRECT
+                    CreatedByUser = user?.FullName ?? "Unknown"
+                });
+            }
+
+            return result;
+        }
         public async Task<List<Property>> GetByUserAsync(
             string userId)
         {

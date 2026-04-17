@@ -141,6 +141,24 @@ namespace Real_Estate_WebAPI.Repositories
             // ✅ Delete user
             await _users.DeleteOneAsync(u => u.Id == userId);
         }
+        public async Task<User?> GetByRefreshTokenAsync(string refreshToken)
+        {
+            return await _users
+                .Find(u => u.RefreshTokens.Any(rt => rt.Token == refreshToken))
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task RemoveRefreshTokenAsync(string userId)
+        {
+            var update = Builders<User>.Update
+                .Set(u => u.RefreshTokens, null)
+                .Set(u => u.PasswordResetTokenExpiresAt, null);
+
+            await _users.UpdateOneAsync(
+                u => u.Id == userId,
+                update
+            );
+        }
 
 
     }
