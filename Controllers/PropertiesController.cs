@@ -227,6 +227,37 @@ namespace Real_Estate_WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("by-user/{userId}")]
+        public async Task<IActionResult> GetByUserId(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+                return BadRequest(new { message = "UserId is required" });
+
+            var properties = await _repository.GetByUserAsync(userId);
+
+            if (properties == null || !properties.Any())
+                return Ok(new List<object>());
+
+            // Clean response (important)
+            var result = properties.Select(p => new
+            {
+                id = p.Id.ToString(),
+                title = p.Title,
+                price = p.Price,
+                priceUnit = p.PriceUnit,
+                city = p.City,
+                locality = p.Locality,
+                category = p.PropertyCategory,
+                area = p.Area,
+                areaUnit = p.AreaUnit,
+                status = p.Status,
+                images = p.UploadedImages,
+                createdAt = p.CreatedAt
+            });
+
+            return Ok(result);
+        }
+
         // ======================================
         // NEARBY SEARCH
         // ======================================
