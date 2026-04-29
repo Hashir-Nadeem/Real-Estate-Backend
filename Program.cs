@@ -66,12 +66,13 @@ builder.Services.Configure<JwtSettings>(
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
+    options.AddPolicy("AllowAll",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+            policy
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
 
@@ -96,7 +97,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();   // FIRST
 app.UseAuthorization();    // SECOND
-app.UseCors("AllowFrontend");
+app.UseCors("AllowAll");
 
 
 

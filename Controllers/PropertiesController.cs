@@ -227,7 +227,7 @@ namespace Real_Estate_WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("by-user/{userId}")]
+        [HttpGet("byuser/{userId}")]
         public async Task<IActionResult> GetByUserId(string userId)
         {
             if (string.IsNullOrEmpty(userId))

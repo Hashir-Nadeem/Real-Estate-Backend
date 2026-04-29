@@ -182,9 +182,8 @@ namespace Real_Estate_WebAPI.Repositories
             string userId)
         {
             return await _properties
-                .Find(p => p.UserId == userId)
-                .SortByDescending(p => p.CreatedAt)
-                .ToListAsync();
+           .Find(p => p.UserId == userId || p.UserId.ToString() == userId)
+           .ToListAsync();
         }
 
         public async Task UpdateAsync(Property property)
