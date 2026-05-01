@@ -82,7 +82,7 @@ var app = builder.Build();
 // ---------------- PIPELINE ----------------
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-app.Urls.Add($"http://*:{port}");
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 app.MapGet("/", () => "API is running");
 // Swagger
