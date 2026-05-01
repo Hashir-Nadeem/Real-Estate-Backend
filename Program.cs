@@ -12,35 +12,32 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ PORT CONFIG HERE
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(int.Parse(port));
-});
-
-// services...
+// ---------------- BASIC SERVICES ----------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// MongoDB
+// ---------------- CONFIGURATION ----------------
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
-builder.Services.AddSingleton<DatabaseInitializer>();
+builder.Services.Configure<SmtpSettings>(
+    builder.Configuration.GetSection("SmtpSettings"));
 
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
+
+// ---------------- DATABASE ----------------
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
     return new MongoClient(settings.ConnectionString);
 });
 
-// Services
+builder.Services.AddSingleton<DatabaseInitializer>();
+
+// ---------------- DEPENDENCY INJECTION ----------------
 builder.Services.AddHttpContextAccessor();
-builder.Services.Configure<SmtpSettings>(
-    builder.Configuration.GetSection("SmtpSettings"));
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -48,82 +45,80 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 
-// JWT
+// ---------------- JWT AUTH ----------------
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()
+    ?? throw new Exception("JwtSettings not configured properly");
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-.AddJwtBearer(options =>
-{
-    var jwt = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
-
-    options.TokenValidationParameters = new TokenValidationParameters
+    .AddJwtBearer(options =>
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = jwt.Issuer,
-        ValidAudience = jwt.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(jwt.Key))
-    };
-});
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
 
-builder.Services.Configure<JwtSettings>(
-    builder.Configuration.GetSection("JwtSettings"));
+            ValidIssuer = jwtSettings.Issuer,
+            ValidAudience = jwtSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(jwtSettings.Key))
+        };
+    });
 
-// ---------------- CORS (FIXED) ----------------
-
+// ---------------- CORS ----------------
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-      .SetIsOriginAllowed(origin => true) // ?? works with ngrok.dev
-      .AllowAnyHeader()
-      .AllowAnyMethod()
-      .AllowCredentials();
+            .SetIsOriginAllowed(_ => true) // ⚠️ allow all (dev only)
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
 var app = builder.Build();
 
+// ---------------- MIDDLEWARE ----------------
 
-app.MapGet("/", () => "API is running");
-// Swagger
-app.UseSwagger();
-app.UseSwaggerUI();
+// Swagger (only in dev recommended)
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-// DB Init
+// Initialize DB
 using (var scope = app.Services.CreateScope())
 {
-    var initializer = scope.ServiceProvider
-        .GetRequiredService<DatabaseInitializer>();
-
+    var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
     await initializer.InitializeAsync();
 }
 
-// HTTPS
-//app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // enable in production
 
-// ?? IMPORTANT: CORS FIRST
-app.UseCors("AllowAll");
+// CORS MUST come before auth
+app.UseCors("AllowFrontend");
 
-// ?? Handle OPTIONS (preflight)
+// Handle preflight (optional but safe)
 app.Use(async (context, next) =>
 {
-    if (context.Request.Method == "OPTIONS")
+    if (context.Request.Method == HttpMethods.Options)
     {
-        context.Response.StatusCode = 200;
-        await context.Response.CompleteAsync();
+        context.Response.StatusCode = StatusCodes.Status200OK;
         return;
     }
 
     await next();
 });
 
-// Auth AFTER CORS
+// Auth
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Routes
 app.MapControllers();
 
 app.Run();
