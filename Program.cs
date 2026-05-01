@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
@@ -12,8 +12,15 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---------------- SERVICES ----------------
+// ✅ PORT CONFIG HERE
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port));
+});
+
+// services...
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -79,14 +86,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ---------------- PIPELINE ----------------
-
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(int.Parse(port));
-});
 
 app.MapGet("/", () => "API is running");
 // Swagger
