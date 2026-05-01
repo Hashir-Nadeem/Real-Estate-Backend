@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
 using Real_Estate_WebAPI.Interfaces;
@@ -25,10 +26,7 @@ builder.Services.AddSingleton<DatabaseInitializer>();
 
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
-    var settings = builder.Configuration
-        .GetSection("MongoDbSettings")
-        .Get<MongoDbSettings>();
-
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
     return new MongoClient(settings.ConnectionString);
 });
 
@@ -83,6 +81,10 @@ var app = builder.Build();
 
 // ---------------- PIPELINE ----------------
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://*:{port}");
+
+app.MapGet("/", () => "API is running");
 // Swagger
 app.UseSwagger();
 app.UseSwaggerUI();
