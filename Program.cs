@@ -31,7 +31,21 @@ builder.Services.Configure<JwtSettings>(
 builder.Services.AddSingleton<IMongoClient>(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-    return new MongoClient(settings.ConnectionString);
+
+    var mongoSettings = MongoClientSettings.FromConnectionString(settings.ConnectionString);
+
+    // 🔥 CRITICAL FIXES
+    mongoSettings.ServerSelectionTimeout = TimeSpan.FromSeconds(5);
+    mongoSettings.ConnectTimeout = TimeSpan.FromSeconds(5);
+    mongoSettings.SocketTimeout = TimeSpan.FromSeconds(5);
+
+    // Force TLS 1.2 (important for Heroku/OpenSSL issues)
+    mongoSettings.SslSettings = new SslSettings
+    {
+        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
+    };
+
+    return new MongoClient(mongoSettings);
 });
 
 builder.Services.AddSingleton<DatabaseInitializer>();
