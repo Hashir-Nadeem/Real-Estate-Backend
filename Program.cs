@@ -105,20 +105,23 @@ if (app.Environment.IsDevelopment())
 }
 
 // Initialize DB
-using (var scope = app.Services.CreateScope())
+app.Lifetime.ApplicationStarted.Register(() =>
 {
-    try
+    Task.Run(async () =>
     {
-        var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
-        await initializer.InitializeAsync();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Database initialization failed: {ex.Message}");
-        // Optional: log full stack trace
-    }
-}
+        using var scope = app.Services.CreateScope();
 
+        try
+        {
+            var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+            await initializer.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("DB init failed: " + ex.Message);
+        }
+    });
+});
 // app.UseHttpsRedirection(); // enable in production
 
 // CORS MUST come before auth

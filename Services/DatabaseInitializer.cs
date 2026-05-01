@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Real_Estate_WebAPI.Models;
 using Real_Estate_WebAPI.Settings;
+using MongoDB.Bson;
 
 namespace Real_Estate_WebAPI.Services
 {
@@ -25,15 +26,18 @@ namespace Real_Estate_WebAPI.Services
 
         public async Task InitializeAsync()
         {
-          
+
             var retries = 3;
 
             for (int i = 0; i < retries; i++)
             {
                 try
                 {
+                   
                     await CreateUserIndexes();
                     await CreatePropertyIndexes();
+
+                    Console.WriteLine("Database initialized successfully");
                     return;
                 }
                 catch (Exception ex)
@@ -43,8 +47,9 @@ namespace Real_Estate_WebAPI.Services
                 }
             }
 
-            throw new Exception("Database initialization failed after retries.");
+            Console.WriteLine("Database initialization failed after retries.");
         }
+
 
         // =========================
         // USER INDEXES
