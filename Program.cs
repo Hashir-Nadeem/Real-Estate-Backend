@@ -34,12 +34,14 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 
     var mongoSettings = MongoClientSettings.FromConnectionString(settings.ConnectionString);
 
-    // 🔥 CRITICAL FIXES
     mongoSettings.ServerSelectionTimeout = TimeSpan.FromSeconds(5);
     mongoSettings.ConnectTimeout = TimeSpan.FromSeconds(5);
     mongoSettings.SocketTimeout = TimeSpan.FromSeconds(5);
 
-    // Force TLS 1.2 (important for Heroku/OpenSSL issues)
+    // 🔥 THIS IS THE MISSING PIECE
+    mongoSettings.MaxConnectionPoolSize = 5;   // default is ~100
+    mongoSettings.MinConnectionPoolSize = 0;
+
     mongoSettings.SslSettings = new SslSettings
     {
         EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
@@ -107,7 +109,7 @@ if (app.Environment.IsDevelopment())
 // Initialize DB
 app.Lifetime.ApplicationStarted.Register(() =>
 {
-    Task.Run(async () =>
+    _ = Task.Run(async () =>
     {
         using var scope = app.Services.CreateScope();
 
