@@ -100,11 +100,8 @@ var app = builder.Build();
 // ---------------- MIDDLEWARE ----------------
 
 // Swagger (only in dev recommended)
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Initialize DB
 app.Lifetime.ApplicationStarted.Register(() =>
