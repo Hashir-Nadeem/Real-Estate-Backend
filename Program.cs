@@ -93,8 +93,16 @@ if (app.Environment.IsDevelopment())
 // Initialize DB
 using (var scope = app.Services.CreateScope())
 {
-    var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
-    await initializer.InitializeAsync();
+    try
+    {
+        var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+        await initializer.InitializeAsync();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database initialization failed: {ex.Message}");
+        // Optional: log full stack trace
+    }
 }
 
 // app.UseHttpsRedirection(); // enable in production

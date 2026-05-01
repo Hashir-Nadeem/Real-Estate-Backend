@@ -25,8 +25,25 @@ namespace Real_Estate_WebAPI.Services
 
         public async Task InitializeAsync()
         {
-            await CreateUserIndexes();
-            await CreatePropertyIndexes();
+          
+            var retries = 3;
+
+            for (int i = 0; i < retries; i++)
+            {
+                try
+                {
+                    await CreateUserIndexes();
+                    await CreatePropertyIndexes();
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Retry {i + 1} failed: {ex.Message}");
+                    await Task.Delay(2000);
+                }
+            }
+
+            throw new Exception("Database initialization failed after retries.");
         }
 
         // =========================
