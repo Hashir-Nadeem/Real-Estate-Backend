@@ -11,13 +11,13 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ---------------- SERVICES ----------------
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// MongoDB
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
@@ -32,15 +32,18 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     return new MongoClient(settings.ConnectionString);
 });
 
+// Services
 builder.Services.AddHttpContextAccessor();
 builder.Services.Configure<SmtpSettings>(
-builder.Configuration.GetSection("SmtpSettings"));
+    builder.Configuration.GetSection("SmtpSettings"));
+
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 
+// JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
@@ -52,7 +55,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-
         ValidIssuer = jwt.Issuer,
         ValidAudience = jwt.Audience,
         IssuerSigningKey = new SymmetricSecurityKey(
@@ -60,46 +62,62 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     };
 });
 
-
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings"));
 
+// ---------------- CORS (FIXED) ----------------
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
-        policy =>
-        {
-            policy
-                .AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+      .SetIsOriginAllowed(origin => true) // ?? works with ngrok.dev
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowCredentials();
+    });
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ---------------- PIPELINE ----------------
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
 
+// DB Init
 using (var scope = app.Services.CreateScope())
 {
     var initializer = scope.ServiceProvider
         .GetRequiredService<DatabaseInitializer>();
 
-   await initializer.InitializeAsync();
-}
-if (app.Environment.IsDevelopment())
-{
-     app.UseHttpsRedirection();
+    await initializer.InitializeAsync();
 }
 
-app.UseAuthentication();   // FIRST
-app.UseAuthorization();    // SECOND
+// HTTPS
+//app.UseHttpsRedirection();
+
+// ?? IMPORTANT: CORS FIRST
 app.UseCors("AllowAll");
 
+// ?? Handle OPTIONS (preflight)
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.StatusCode = 200;
+        await context.Response.CompleteAsync();
+        return;
+    }
 
+    await next();
+});
+
+// Auth AFTER CORS
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
