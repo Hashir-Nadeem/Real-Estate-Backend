@@ -34,8 +34,8 @@ namespace Real_Estate_WebAPI.Services
                 try
                 {
                    
-                    await CreateUserIndexes();
-                    await CreatePropertyIndexes();
+                 //   await CreateUserIndexes();
+                   // await CreatePropertyIndexes();
 
                     Console.WriteLine("Database initialized successfully");
                     return;
