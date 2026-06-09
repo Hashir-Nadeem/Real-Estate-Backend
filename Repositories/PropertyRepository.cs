@@ -11,6 +11,7 @@ namespace Real_Estate_WebAPI.Repositories
     public class PropertyRepository : IPropertyRepository
     {
         private readonly IMongoCollection<Property> _properties;
+        public readonly IMongoCollection<PropertyImage> _propertyImages;
         private readonly IAuthService _auth;
 
         public PropertyRepository(
@@ -23,6 +24,9 @@ namespace Real_Estate_WebAPI.Repositories
             _properties = database.GetCollection<Property>(
                 settings.Value.PropertiesCollection);
 
+            _propertyImages = database.GetCollection<PropertyImage>(
+               settings.Value.PropertiesImageCollection);
+
             _auth = auth; // ✅ correct assignment
         }
 
@@ -30,6 +34,7 @@ namespace Real_Estate_WebAPI.Repositories
         {
             await _properties.InsertOneAsync(property);
         }
+
 
         public async Task<Property> GetByIdAsync(string id)
         {
@@ -83,7 +88,6 @@ namespace Real_Estate_WebAPI.Repositories
                 Email = property.Email,
                 Whatsapp = property.Whatsapp,
 
-                UploadedImages = property.UploadedImages,
 
                 Status = property.Status,
                 CreatedAt = property.CreatedAt,
@@ -117,15 +121,15 @@ namespace Real_Estate_WebAPI.Repositories
         }
 
         public async Task<List<PropertyDetailsDto>> GetAllPropertyDetailsAsync(
-    int page,
-    int pageSize)
+          int page,
+          int pageSize)
         {
             var properties = await _properties
-      .Find(_ => true) // explicit "get all"
-      .SortByDescending(p => p.CreatedAt)
-      .Skip((page - 1) * pageSize)
-      .Limit(pageSize)
-      .ToListAsync();
+                .Find(_ => true)
+                .SortByDescending(p => p.CreatedAt)
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
 
             var result = new List<PropertyDetailsDto>();
 
@@ -133,6 +137,10 @@ namespace Real_Estate_WebAPI.Repositories
             {
                 var user = await _auth.GetUserByIdAsync(property.UserId);
 
+                var images = await _propertyImages
+                 .Find(x => x.PropertyId == property.Id)
+                 .ToListAsync();
+              
                 result.Add(new PropertyDetailsDto
                 {
                     Id = property.Id,
@@ -166,12 +174,14 @@ namespace Real_Estate_WebAPI.Repositories
                     Email = property.Email,
                     Whatsapp = property.Whatsapp,
 
-                    UploadedImages = property.UploadedImages,
+                    UploadedImages = images
+                        .OrderBy(i => i.SortOrder)
+                        .Select(i => Convert.ToBase64String(i.ImageData))
+                        .ToList(),
 
                     Status = property.Status,
                     CreatedAt = property.CreatedAt,
 
-                    // ✅ SAFE + CORRECT
                     CreatedByUser = user?.FullName ?? "Unknown"
                 });
             }

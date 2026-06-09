@@ -42,7 +42,6 @@ namespace Real_Estate_WebAPI.Models
         public string Email { get; set; }
         public string Whatsapp { get; set; }
 
-        public List<string> UploadedImages { get; set; } = new();
 
         public string Status { get; set; } = "Pending";
 
@@ -55,4 +54,24 @@ namespace Real_Estate_WebAPI.Models
         public double Lat { get; set; }
         public double Lng { get; set; }
     }
+    public class PropertyImage
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string PropertyId { get; set; }
+
+        public string FileName { get; set; }
+
+        public string ContentType { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public int SortOrder { get; set; }
+
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
 }
+

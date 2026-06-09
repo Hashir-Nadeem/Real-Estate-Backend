@@ -37,6 +37,7 @@ namespace Real_Estate_WebAPI.DTOs.Property
         public string Email { get; set; }
         public string Whatsapp { get; set; }
 
-        public List<string> UploadedImages { get; set; }
+        // Images come in request only
+        public List<PropertyImageRequest> UploadedImages { get; set; } = new();
     }
 }

@@ -13,10 +13,12 @@ namespace Real_Estate_WebAPI.Controllers
     public class PropertiesController : ControllerBase
     {
         private readonly IPropertyRepository _repository;
+        private readonly IPropertyImageRepository _propertyImages;
 
-        public PropertiesController(IPropertyRepository repository)
+        public PropertiesController(IPropertyRepository repository, IPropertyImageRepository propertyImages)
         {
             _repository = repository;
+            _propertyImages = propertyImages;
         }
 
         // ======================================
@@ -54,7 +56,6 @@ namespace Real_Estate_WebAPI.Controllers
                 ContactPersonName = request.FormData.ContactPersonName,
                 Email = request.FormData.Email,
                 Whatsapp = request.FormData.Whatsapp,
-                UploadedImages = request.FormData.UploadedImages ?? new List<string>(),
                 Status = "Pending",
                 CreatedAt = DateTime.UtcNow
             };
@@ -71,14 +72,34 @@ namespace Real_Estate_WebAPI.Controllers
             }
 
             await _repository.CreateAsync(property);
+            if (request.FormData.UploadedImages?.Any() == true)
+            {
+                var images = request.FormData.UploadedImages
+                    .Select((image, index) => new PropertyImage
+                    {
+                        PropertyId = property.Id,
+                        FileName = image.FileName,
+                        ContentType = image.ContentType,
+                        ImageData = Convert.FromBase64String(image.Data),
+                        SortOrder = index
+                    })
+                    .ToList();
 
-            return Ok(new { message = "Property submitted successfully" });
+                await _propertyImages.CreateManyAsync(images);
+            }
+
+        
+            return Ok(new
+            {
+                message = "Property submitted successfully",
+                propertyId = property.Id
+            });
         }
         // ======================================
         // GET ALL (Public Approved)
         // ======================================
 
-        [HttpGet]
+        [HttpGet("GetAllProperties")]
         public async Task<IActionResult> GetAll(
        int page = 1,
        int pageSize = 1000)
@@ -88,7 +109,7 @@ namespace Real_Estate_WebAPI.Controllers
         }
 
 
-        [HttpGet("GetAllProperties")]
+        [HttpGet]
         public async Task<IActionResult> GetAllProperties(
        int page = 1,
        int pageSize = 1000)
@@ -251,7 +272,6 @@ namespace Real_Estate_WebAPI.Controllers
                 area = p.Area,
                 areaUnit = p.AreaUnit,
                 status = p.Status,
-                images = p.UploadedImages,
                 createdAt = p.CreatedAt
             });
 

@@ -60,6 +60,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
+builder.Services.AddScoped<IPropertyImageRepository, PropertyImageRepository>();
 
 // ---------------- JWT AUTH ----------------
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()

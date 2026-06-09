@@ -10,6 +10,7 @@ namespace Real_Estate_WebAPI.Services
     {
         private readonly IMongoCollection<User> _users;
         private readonly IMongoCollection<Property> _properties;
+        private readonly IMongoCollection<PropertyImage> _propertiesImages;
 
         public DatabaseInitializer(
             IMongoClient client,
@@ -22,6 +23,9 @@ namespace Real_Estate_WebAPI.Services
 
             _properties = database.GetCollection<Property>(
                 settings.Value.PropertiesCollection);
+
+            _propertiesImages = database.GetCollection<PropertyImage>(
+             settings.Value.PropertiesImageCollection);
         }
 
         public async Task InitializeAsync()
@@ -34,8 +38,9 @@ namespace Real_Estate_WebAPI.Services
                 try
                 {
                    
-                 //   await CreateUserIndexes();
-                   // await CreatePropertyIndexes();
+                   await CreateUserIndexes();
+                    await CreatePropertyIndexes();
+                    await CreatePropertyImageIndexes();
 
                     Console.WriteLine("Database initialized successfully");
                     return;
@@ -79,7 +84,20 @@ namespace Real_Estate_WebAPI.Services
                 phoneIndex
             });
         }
+        private async Task CreatePropertyImageIndexes()
+        {
+            var propertyIdIndex = new CreateIndexModel<PropertyImage>(
+                Builders<PropertyImage>.IndexKeys.Ascending(i => i.PropertyId));
 
+            var createdAtIndex = new CreateIndexModel<PropertyImage>(
+                Builders<PropertyImage>.IndexKeys.Descending(i => i.CreatedAt));
+
+            await _propertiesImages.Indexes.CreateManyAsync(new[]
+            {
+        propertyIdIndex,
+        createdAtIndex
+    });
+        }
         // =========================
         // PROPERTY INDEXES
         // =========================

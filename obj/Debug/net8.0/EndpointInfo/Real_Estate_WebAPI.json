@@ -4161,13 +4161,6 @@
             "type": "string",
             "nullable": true
           },
-          "uploadedImages": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
           "status": {
             "type": "string",
             "nullable": true
@@ -4265,8 +4258,26 @@
           "uploadedImages": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/PropertyImageRequest"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PropertyImageRequest": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
             "nullable": true
           }
         },

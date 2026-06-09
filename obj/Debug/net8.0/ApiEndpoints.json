@@ -155,9 +155,9 @@
   },
   {
     "ContainingType": "Real_Estate_WebAPI.Controllers.PropertiesController",
-    "Method": "GetAll",
+    "Method": "GetAllProperties",
     "RelativePath": "api/properties",
-    "HttpMethod": "GET",
+    "HttpMethod": "",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -245,7 +245,7 @@
   },
   {
     "ContainingType": "Real_Estate_WebAPI.Controllers.PropertiesController",
-    "Method": "GetAllProperties",
+    "Method": "GetAll",
     "RelativePath": "api/properties/GetAllProperties",
     "HttpMethod": "GET",
     "IsController": true,

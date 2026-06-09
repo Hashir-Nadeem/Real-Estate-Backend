@@ -7,6 +7,7 @@
         public string UsersCollection { get; set; }
 
         public string PropertiesCollection { get; set; }
+        public string PropertiesImageCollection { get; set; }
     }
 
 }
