@@ -157,7 +157,7 @@
     "ContainingType": "Real_Estate_WebAPI.Controllers.PropertiesController",
     "Method": "GetAllProperties",
     "RelativePath": "api/properties",
-    "HttpMethod": "",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

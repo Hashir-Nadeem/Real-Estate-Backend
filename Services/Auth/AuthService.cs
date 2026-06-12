@@ -96,7 +96,7 @@ namespace Real_Estate_WebAPI.Services.Auth
                 await _users.UpdateAsync(user);
 
                 // ✅ Frontend URL (move to config later)
-                var frontendUrl = "http://localhost:3000";
+                var frontendUrl = "https://real-estate-azure-sigma.vercel.app";
 
                 var resetLink =
                     $"{frontendUrl}/reset-password?token={Uri.EscapeDataString(token)}";
@@ -224,7 +224,7 @@ If the button doesn’t work, copy and paste this link:<br/>
             await _users.UpdateAsync(user);
 
             // ✅ Get frontend URL from configuration
-            var frontendUrl = "http://localhost:3000";
+            var frontendUrl = "https://real-estate-azure-sigma.vercel.app";
 
             var resetLink =
                 $"{frontendUrl}/reset-password?token={Uri.EscapeDataString(token)}";
@@ -300,11 +300,22 @@ If the button doesn’t work, copy and paste this link:<br/>
 </body>
 </html>";
 
-            await _email.SendAsync(
-                user.Email,
-                "Reset Your Password",
-                htmlBody);
+            try
+            {
+                await _email.SendAsync(
+                    user.Email,
+                    "Reset Your Password",
+                    htmlBody);
+            }
+            catch (Exception ex)
+            {
+                // Track error in response (for debugging / frontend)
+                throw new Exception($"SERVER_ERROR: {ex.Message}");
+            }
         }
+
+
+
         public async Task ResetPasswordAsync( string token,string newPassword)
         {
             var decodedToken = Uri.UnescapeDataString(token);

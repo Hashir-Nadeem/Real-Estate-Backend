@@ -5,6 +5,7 @@ using Real_Estate_WebAPI.Interfaces;
 using Real_Estate_WebAPI.Models;
 using Real_Estate_WebAPI.Settings;
 using Real_Estate_WebAPI.Services.Auth;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Real_Estate_WebAPI.Repositories
 {
@@ -188,14 +189,75 @@ namespace Real_Estate_WebAPI.Repositories
 
             return result;
         }
-        public async Task<List<Property>> GetByUserAsync(
-            string userId)
+        public async Task<List<PropertyDetailsDto>> GetByUserAsync(string userId)
         {
-            return await _properties
-           .Find(p => p.UserId == userId || p.UserId.ToString() == userId)
-           .ToListAsync();
-        }
+            // 1️⃣ Get properties first
+            var properties = await _properties
+                .Find(p => p.UserId == userId || p.UserId.ToString() == userId)
+                .ToListAsync();
 
+            var propertyIds = properties.Select(p => p.Id).ToList();
+
+            // 2️⃣ Get all images in one query (IMPORTANT optimization)
+            var images = await _propertyImages
+                .Find(x => propertyIds.Contains(x.PropertyId))
+                .ToListAsync();
+
+            // 3️⃣ Group images by propertyId
+            var imageMap = images
+                .GroupBy(i => i.PropertyId)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.OrderBy(i => i.SortOrder)
+                          .Select(i => Convert.ToBase64String(i.ImageData))
+                          .ToList()
+                );
+
+            // 4️⃣ Build DTO
+            var result = properties.Select(p => new PropertyDetailsDto
+            {
+                Id = p.Id,
+
+                Title = p.Title,
+                Description = p.Description,
+
+                Price = p.Price,
+                PriceUnit = p.PriceUnit,
+
+                Area = p.Area,
+                AreaUnit = p.AreaUnit,
+
+                Bedrooms = p.Bedrooms,
+                Bathrooms = p.Bathrooms,
+
+                Facing = p.Facing,
+                FloorNumber = p.FloorNumber,
+                TotalFloors = p.TotalFloors,
+
+                FullAddress = p.FullAddress,
+                City = p.City,
+                Locality = p.Locality,
+
+                PropertyCategory = p.PropertyCategory,
+                TransactionType = p.TransactionType,
+                YouAreHereTo = p.YouAreHereTo,
+
+                Location = p.Location,
+
+                ContactPersonName = p.ContactPersonName,
+                Email = p.Email,
+                Whatsapp = p.Whatsapp,
+                Status = p.Status,
+
+                UploadedImages = imageMap.ContainsKey(p.Id)
+                    ? imageMap[p.Id]
+                    : new List<string>(),
+
+                CreatedAt = p.CreatedAt
+            }).ToList();
+
+            return result;
+        }
         public async Task UpdateAsync(Property property)
         {
             await _properties.ReplaceOneAsync(

@@ -14,7 +14,7 @@ namespace Real_Estate_WebAPI.Interfaces
             int pageSize);
         Task<List<PropertyDetailsDto>> GetAllPropertyDetailsAsync(int page, int pageSize);
 
-        Task<List<Property>> GetByUserAsync(
+        Task<List<PropertyDetailsDto>> GetByUserAsync(
             string userId);
 
         Task UpdateAsync(Property property);

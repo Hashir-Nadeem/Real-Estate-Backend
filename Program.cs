@@ -8,6 +8,7 @@ using Real_Estate_WebAPI.Services;
 using Real_Estate_WebAPI.Services.Auth;
 using Real_Estate_WebAPI.Services.Email;
 using Real_Estate_WebAPI.Settings;
+using Resend;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +22,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
-builder.Services.Configure<SmtpSettings>(
-    builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.Configure<ResendSettings>(
+    builder.Configuration.GetSection("ResendSettings"));
 
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings"));
@@ -62,6 +63,15 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 builder.Services.AddScoped<IPropertyImageRepository, PropertyImageRepository>();
 
+builder.Services.Configure<ResendSettings>(
+    builder.Configuration.GetSection("Resend"));
+
+builder.Services.AddSingleton<IResend>(_ =>
+{
+    var apiKey = builder.Configuration["Resend:ApiKey"];
+    return ResendClient.Create(apiKey);
+});
+
 // ---------------- JWT AUTH ----------------
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()
     ?? throw new Exception("JwtSettings not configured properly");
@@ -96,6 +106,21 @@ builder.Services.AddCors(options =>
     });
 });
 
+
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+
+
+builder.Services.AddTransient<IResend, ResendClient>();
+
+builder.Services.AddSingleton<IResend>(_ =>
+{
+    return ResendClient.Create("re_L92MdRY2_7g1MmS5oULRDEpB2c98pD6Pg");
+
+});
+var apiKey = builder.Configuration["Resend:ApiKey"];
+
+Console.WriteLine("RESEND API KEY => " + apiKey);
 var app = builder.Build();
 
 // ---------------- MIDDLEWARE ----------------

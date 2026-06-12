@@ -7,68 +7,12 @@
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:repositories\\propertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\repositories\\propertyimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:repositories\\propertyimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\interfaces\\ipropertyimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:interfaces\\ipropertyimagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\property\\createpropertyrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\property\\createpropertyrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\databaseinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\databaseinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\settings\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:settings\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\settings\\smtpsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:settings\\smtpsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\heroku.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:heroku.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\auth\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\auth\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\real_estate_webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:real_estate_webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,60 +23,20 @@
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\settings\\resendsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:settings\\resendsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\auth\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\auth\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\auth\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\auth\\resetpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\dtos\\auth\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:dtos\\auth\\forgotpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\email\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\email\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\auth\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\auth\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\services\\auth\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:services\\auth\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\real_estate_webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:real_estate_webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -142,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,15 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Property.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\Property.cs",
-              "RelativeDocumentMoniker": "Models\\Property.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\Property.cs",
-              "RelativeToolTip": "Models\\Property.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAlwBEAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PropertiesController.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\PropertiesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PropertiesController.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\PropertiesController.cs",
+              "RelativeToolTip": "Controllers\\PropertiesController.cs",
+              "ViewState": "AgIAALgAAAAA2szMzMwPwGoAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T17:12:52.893Z",
+              "WhenOpened": "2026-06-12T06:01:04.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IPropertyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IPropertyRepository.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
+              "RelativeToolTip": "Interfaces\\IPropertyRepository.cs",
+              "ViewState": "AgIAAAMAAABwMTMzMzMLwBAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T06:52:01.033Z",
               "EditorCaption": ""
             },
             {
@@ -169,383 +86,84 @@
               "RelativeDocumentMoniker": "Repositories\\PropertyRepository.cs",
               "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyRepository.cs",
               "RelativeToolTip": "Repositories\\PropertyRepository.cs",
-              "ViewState": "AgIAAHMAAABAZWZmZmYrwLAAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABsBAAAAzMzMzMwMwCwBAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T10:48:08.506Z",
+              "WhenOpened": "2026-06-12T06:01:39.157Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PropertyImageRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyImageRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\PropertyImageRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyImageRepository.cs",
-              "RelativeToolTip": "Repositories\\PropertyImageRepository.cs",
-              "ViewState": "AgIAACUAAADAmJmZmZktwC8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T10:26:07.263Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IPropertyImageRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyImageRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IPropertyImageRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyImageRepository.cs",
-              "RelativeToolTip": "Interfaces\\IPropertyImageRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T10:25:28.935Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABkAAABAAAAAAMAtwA4AAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:44:19.608Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PropertiesController.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\PropertiesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PropertiesController.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\PropertiesController.cs",
-              "RelativeToolTip": "Controllers\\PropertiesController.cs",
-              "ViewState": "AgIAAFsAAABgzMzMzMwwwGoAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T11:52:07.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IPropertyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IPropertyRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
-              "RelativeToolTip": "Interfaces\\IPropertyRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T10:47:33.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "heroku.yml",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\heroku.yml",
-              "RelativeDocumentMoniker": "heroku.yml",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\heroku.yml",
-              "RelativeToolTip": "heroku.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2026-05-01T18:36:06.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreatePropertyRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Property\\CreatePropertyRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Property\\CreatePropertyRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Property\\CreatePropertyRequest.cs",
-              "RelativeToolTip": "DTOs\\Property\\CreatePropertyRequest.cs",
-              "ViewState": "AgIAABgAAAAA4MzMzMzMvygAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T16:03:51.885Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Dockerfile",
-              "RelativeDocumentMoniker": "Dockerfile",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Dockerfile",
-              "RelativeToolTip": "Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-01T15:11:07.105Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SmtpSettings.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\SmtpSettings.cs",
-              "RelativeDocumentMoniker": "Settings\\SmtpSettings.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\SmtpSettings.cs",
-              "RelativeToolTip": "Settings\\SmtpSettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T10:07:45.069Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-01T19:50:32.067Z"
+              "WhenOpened": "2026-06-11T14:23:31.769Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "JwtSettings.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\JwtSettings.cs",
-              "RelativeDocumentMoniker": "Settings\\JwtSettings.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\JwtSettings.cs",
-              "RelativeToolTip": "Settings\\JwtSettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ResendSettings.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\ResendSettings.cs",
+              "RelativeDocumentMoniker": "Settings\\ResendSettings.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\ResendSettings.cs",
+              "RelativeToolTip": "Settings\\ResendSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T17:59:58.526Z"
+              "WhenOpened": "2026-06-11T12:44:52.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DatabaseInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\DatabaseInitializer.cs",
-              "RelativeDocumentMoniker": "Services\\DatabaseInitializer.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\DatabaseInitializer.cs",
-              "RelativeToolTip": "Services\\DatabaseInitializer.cs",
-              "ViewState": "AgIAABMAAAAAmJmZmZklwCoAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T19:58:28.336Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Real_Estate_WebAPI",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
-              "RelativeDocumentMoniker": "Real_Estate_WebAPI.csproj",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.csproj",
-              "RelativeToolTip": "Real_Estate_WebAPI.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-01T06:47:37.946Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MongoDbSettings.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\MongoDbSettings.cs",
-              "RelativeDocumentMoniker": "Settings\\MongoDbSettings.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Settings\\MongoDbSettings.cs",
-              "RelativeToolTip": "Settings\\MongoDbSettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:53:22.089Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\IAuthService.cs",
-              "RelativeDocumentMoniker": "Services\\Auth\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\IAuthService.cs",
-              "RelativeToolTip": "Services\\Auth\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T12:21:56.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAgAAAAAMzMzMzMrwB0AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T18:04:11.167Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\AuthService.cs",
-              "RelativeDocumentMoniker": "Services\\Auth\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\AuthService.cs",
-              "RelativeToolTip": "Services\\Auth\\AuthService.cs",
-              "ViewState": "AgIAAEQAAABgzMzMzMw7wKQBAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T12:22:52.381Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "Interfaces\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T17:51:06.323Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "RefreshToken.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\RefreshToken.cs",
-              "RelativeDocumentMoniker": "Models\\RefreshToken.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\RefreshToken.cs",
-              "RelativeToolTip": "Models\\RefreshToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:51:56.281Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\RegisterRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Auth\\RegisterRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\RegisterRequest.cs",
-              "RelativeToolTip": "DTOs\\Auth\\RegisterRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:57:12.813Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 5,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Email\\EmailService.cs",
               "RelativeDocumentMoniker": "Services\\Email\\EmailService.cs",
               "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Email\\EmailService.cs",
               "RelativeToolTip": "Services\\Email\\EmailService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAowC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAABAmZmZmZkvwC8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T18:35:13.25Z"
+              "WhenOpened": "2026-06-11T12:18:22.704Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Auth\\LoginRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\LoginRequest.cs",
-              "RelativeToolTip": "DTOs\\Auth\\LoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAHUAAAAA9v///38ZwHoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:58:28.752Z"
+              "WhenOpened": "2026-06-11T12:19:16.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAA0wCAAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\AuthService.cs",
+              "RelativeToolTip": "Services\\Auth\\AuthService.cs",
+              "ViewState": "AgIAAB8BAABA/f////8rwDoBAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T16:50:49.57Z"
+              "WhenOpened": "2026-06-11T12:13:06.772Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "RefreshTokenRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\RefreshTokenRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Auth\\RefreshTokenRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\RefreshTokenRequest.cs",
-              "RelativeToolTip": "DTOs\\Auth\\RefreshTokenRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T19:08:31.798Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "README.md",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\README.md",
-              "RelativeDocumentMoniker": "README.md",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\README.md",
-              "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-02-17T16:44:25.785Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ForgotPasswordRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\ForgotPasswordRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Auth\\ForgotPasswordRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\ForgotPasswordRequest.cs",
-              "RelativeToolTip": "DTOs\\Auth\\ForgotPasswordRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T18:44:52.433Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ResetPasswordRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\ResetPasswordRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\Auth\\ResetPasswordRequest.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\DTOs\\Auth\\ResetPasswordRequest.cs",
-              "RelativeToolTip": "DTOs\\Auth\\ResetPasswordRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T18:45:18.665Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "IEmailService.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Email\\IEmailService.cs",
-              "RelativeDocumentMoniker": "Services\\Email\\IEmailService.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Email\\IEmailService.cs",
-              "RelativeToolTip": "Services\\Email\\IEmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T18:34:11.002Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "ITokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\ITokenService.cs",
-              "RelativeDocumentMoniker": "Services\\Auth\\ITokenService.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\ITokenService.cs",
-              "RelativeToolTip": "Services\\Auth\\ITokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T17:54:29.792Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\TokenService.cs",
-              "RelativeDocumentMoniker": "Services\\Auth\\TokenService.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Services\\Auth\\TokenService.cs",
-              "RelativeToolTip": "Services\\Auth\\TokenService.cs",
-              "ViewState": "AgIAABUAAABoMjMzMzMwwCAAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T17:54:53.258Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Real_Estate_WebAPI.http",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.http",
-              "RelativeDocumentMoniker": "Real_Estate_WebAPI.http",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Real_Estate_WebAPI.http",
-              "RelativeToolTip": "Real_Estate_WebAPI.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-02-17T16:44:24.169Z"
+              "WhenOpened": "2026-06-11T12:13:02.686Z",
+              "EditorCaption": ""
             }
           ]
         }

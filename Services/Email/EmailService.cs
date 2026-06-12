@@ -1,46 +1,50 @@
-﻿using MailKit.Net.Smtp;
-using MimeKit;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
+using Real_Estate_WebAPI.Services.Email;
 using Real_Estate_WebAPI.Settings;
+using Resend;
 
-namespace Real_Estate_WebAPI.Services.Email
-{
+
     public class EmailService : IEmailService
     {
-        private readonly SmtpSettings _smtp;
+        private readonly IResend _resend;
+        private readonly ResendSettings _settings;
 
-        public EmailService(IOptions<SmtpSettings> smtp)
+        public EmailService(
+            IResend resend,
+            IOptions<ResendSettings> settings)
         {
-            _smtp = smtp.Value;
+            _resend = resend;
+            _settings = settings.Value;
         }
 
-        public async Task SendAsync(string to, string subject, string body)
+    public async Task SendAsync(string to, string subject, string body)
+    {
+        if (string.IsNullOrWhiteSpace(to))
+            return;
+
+        to = to.Trim();
+
+        var message = new EmailMessage
         {
-            var email = new MimeMessage();
+            From = _settings.FromEmail,
+            Subject = subject,
+            HtmlBody = body
+        };
 
-            email.From.Add(MailboxAddress.Parse(_smtp.FromEmail));
-            email.To.Add(MailboxAddress.Parse(to));
-            email.Subject = subject;
+        message.To.Add(to);
 
-            email.Body = new TextPart("html")
-            {
-                Text = body
-            };
+        try
+        {
+            await _resend.EmailSendAsync(message);
+        }
+        catch (Exception ex)
+        {
+            var key = _settings.ApiKey;
 
-            using var smtpClient = new SmtpClient();
-
-            await smtpClient.ConnectAsync(_smtp.Host, _smtp.Port, false);
-
-            if (!string.IsNullOrEmpty(_smtp.Username))
-            {
-                await smtpClient.AuthenticateAsync(
-                    _smtp.Username,
-                    _smtp.Password);
-            }
-
-            await smtpClient.SendAsync(email);
-            await smtpClient.DisconnectAsync(true);
+            throw new Exception(
+                $"EMAIL_SEND_FAILED: {ex.Message}. " +
+                $"KeyExists: {!string.IsNullOrWhiteSpace(key)}, " +
+                $"KeyPrefix: {(key?.StartsWith("re_") == true ? "OK" : "INVALID")}");
         }
     }
-
 }

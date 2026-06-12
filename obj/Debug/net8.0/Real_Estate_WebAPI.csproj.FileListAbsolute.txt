@@ -115,3 +115,6 @@ C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estat
 C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\SendGrid.dll
 C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\StarkbankEcdsa.dll
+C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\Microsoft.Net.Http.Headers.dll
+C:\Users\Becklicious\Documents\GitHub\GeekPie\Com\Real-Estate-Backend\Real_Estate_WebAPI\bin\Debug\net8.0\Resend.dll

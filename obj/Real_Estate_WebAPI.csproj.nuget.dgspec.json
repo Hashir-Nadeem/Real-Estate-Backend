@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[3.8.0, )"
             },
+            "Resend": {
+              "target": "Package",
+              "version": "[0.5.1, )"
+            },
             "SendGrid": {
               "target": "Package",
               "version": "[9.29.3, )"

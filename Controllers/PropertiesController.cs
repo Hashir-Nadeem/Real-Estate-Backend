@@ -259,20 +259,39 @@ namespace Real_Estate_WebAPI.Controllers
             if (properties == null || !properties.Any())
                 return Ok(new List<object>());
 
-            // Clean response (important)
-            var result = properties.Select(p => new
+            var result = properties.Select(p =>
             {
-                id = p.Id.ToString(),
-                title = p.Title,
-                price = p.Price,
-                priceUnit = p.PriceUnit,
-                city = p.City,
-                locality = p.Locality,
-                category = p.PropertyCategory,
-                area = p.Area,
-                areaUnit = p.AreaUnit,
-                status = p.Status,
-                createdAt = p.CreatedAt
+                var coords = p.Location?.Coordinates;
+
+                return new
+                {
+                    id = p.Id.ToString(),
+
+                    title = p.Title,
+                    description = p.Description,
+
+                    price = p.Price,
+                    priceUnit = p.PriceUnit,
+
+                    city = p.City,
+                    locality = p.Locality,
+                    category = p.PropertyCategory,
+
+                    area = p.Area,
+                    areaUnit = p.AreaUnit,
+
+                    beds = p.Bedrooms,
+                    baths = p.Bathrooms,
+
+                    status = p.Status,
+                    createdAt = p.CreatedAt,
+
+                    // ✅ IMPORTANT: MAP LOCATION
+                    location = p.Location,
+
+                    // ✅ IMAGES
+                    uploadedImages = p.UploadedImages ?? new List<string>()
+                };
             });
 
             return Ok(result);
