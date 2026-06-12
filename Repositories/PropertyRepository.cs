@@ -103,7 +103,7 @@ namespace Real_Estate_WebAPI.Repositories
             int pageSize)
         {
             return await _properties
-                .Find(p => p.Status == "Approved")
+                 .Find(_ => true)
                 .SortByDescending(p => p.CreatedAt)
                 .Skip((page - 1) * pageSize)
                 .Limit(pageSize)
@@ -126,7 +126,7 @@ namespace Real_Estate_WebAPI.Repositories
           int pageSize)
         {
             var properties = await _properties
-                .Find(_ => true)
+                 .Find(p => p.Status == "Approved")
                 .SortByDescending(p => p.CreatedAt)
                 .Skip((page - 1) * pageSize)
                 .Limit(pageSize)

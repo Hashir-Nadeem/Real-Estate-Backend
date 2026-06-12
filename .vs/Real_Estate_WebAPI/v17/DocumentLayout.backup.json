@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\repositories\\propertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:repositories\\propertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|solutionrelative:interfaces\\ipropertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDF9BC7A-9E43-4DBF-B1EE-660709D017DE}|Real_Estate_WebAPI.csproj|c:\\users\\becklicious\\documents\\github\\geekpie\\com\\real-estate-backend\\real_estate_webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,37 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IPropertyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IPropertyRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
-              "RelativeToolTip": "Interfaces\\IPropertyRepository.cs",
-              "ViewState": "AgIAAAMAAABwMTMzMzMLwBAAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T06:52:01.033Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PropertyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\PropertyRepository.cs",
-              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyRepository.cs",
-              "RelativeToolTip": "Repositories\\PropertyRepository.cs",
-              "ViewState": "AgIAAAUAAACAMzMzMzMTwAsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T06:01:39.157Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -86,9 +60,34 @@
               "RelativeDocumentMoniker": "Controllers\\PropertiesController.cs",
               "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Controllers\\PropertiesController.cs",
               "RelativeToolTip": "Controllers\\PropertiesController.cs",
-              "ViewState": "AgIAAAkBAAAAAAAAAAAmwCEBAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAD8v2oAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-12T06:01:04.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPropertyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IPropertyRepository.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Interfaces\\IPropertyRepository.cs",
+              "RelativeToolTip": "Interfaces\\IPropertyRepository.cs",
+              "ViewState": "AgIAAAMAAABwMTMzMzMLwBAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T06:52:01.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PropertyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\PropertyRepository.cs",
+              "ToolTip": "C:\\Users\\Becklicious\\Documents\\GitHub\\GeekPie\\Com\\Real-Estate-Backend\\Real_Estate_WebAPI\\Repositories\\PropertyRepository.cs",
+              "RelativeToolTip": "Repositories\\PropertyRepository.cs",
+              "ViewState": "AgIAABMBAABwYmZmZuYwwCABAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T06:01:39.157Z",
               "EditorCaption": ""
             },
             {
@@ -149,8 +148,7 @@
               "RelativeToolTip": "Services\\Auth\\AuthService.cs",
               "ViewState": "AgIAAB8BAABA/f////8rwDoBAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T12:13:06.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-11T12:13:06.772Z"
             },
             {
               "$type": "Document",
@@ -162,8 +160,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T12:13:02.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-11T12:13:02.686Z"
             }
           ]
         }
