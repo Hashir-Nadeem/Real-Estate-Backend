@@ -56,7 +56,7 @@ namespace Real_Estate_WebAPI.Controllers
                 ContactPersonName = request.FormData.ContactPersonName,
                 Email = request.FormData.Email,
                 Whatsapp = request.FormData.Whatsapp,
-                Status = "Pending",
+                Status = "Approved",
                 CreatedAt = DateTime.UtcNow
             };
 
